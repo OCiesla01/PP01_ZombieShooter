@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    private float moveSpeed = 10.0f;
+    private float moveSpeed = 6.0f;
     private float zBound = 10.0f;
     private float xBound = 20.0f;
+    private float rotationSpeed = 5.0f;
+    public bool isAlive = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,24 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Plane playerPlane = new Plane(Vector3.up, transform.position);
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (playerPlane.Raycast(ray, out float distance))
+        {
+            Vector3 targetPoint = ray.GetPoint(distance);
+
+            Vector3 directionToTarget = targetPoint - transform.position;
+
+            directionToTarget.y = 0;
+
+            if (directionToTarget != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            }
+        }
         MovePlayer();
         RestrictPlayerMovement();
     }
@@ -27,8 +47,8 @@ public class PlayerScript : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.right * moveSpeed * horizontalInput * Time.deltaTime);
-        transform.Translate(Vector3.forward * moveSpeed * verticalInput * Time.deltaTime);
+        transform.Translate(Vector3.right * moveSpeed * horizontalInput * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.forward * moveSpeed * verticalInput * Time.deltaTime, Space.World);
     }
 
     // Restricts Player's movement on vertical and horizontal bounds

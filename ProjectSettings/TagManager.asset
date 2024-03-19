@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Wall
+  - Powerup
   layers:
   - Default
   - TransparentFX
@@ -11,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Wall
   - 
   - 
   - 
@@ -40,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: EnemyIgnoreWall
+    uniqueID: 17256201
     locked: 0

@@ -7,3 +7,7 @@ Setting up the project, creating primitives, creating materials, setting up spac
 _V0.2_
 
 Creating Player's movement, restricting it, creating walls
+
+_V0.3_
+
+Implemented enemies movement towards player at constant rate, created gun and bullet objects, implemented rotation based on mouse position

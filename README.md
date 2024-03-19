@@ -23,3 +23,7 @@ Added collision with powerup logic
 _V0.5_
 
 Implemented random powerup spawning inside the main area, implemented random enemy spawning on the edges of the main area.
+
+_V0.5.1_
+
+Improved bullet firing position

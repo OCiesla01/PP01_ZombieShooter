@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class BulletSpawnerScript : MonoBehaviour
 {
+    public GameObject bulletPrefab;
 
     private float attackSpeed = 0.5f;
     private float nextTimeToFire = 0f;
-
-    public GameObject bulletPrefab;
     // Start is called before the first frame update
     void Start()
     {

@@ -15,3 +15,7 @@ Implemented enemies movement towards player at constant rate, created gun and bu
 _V0.4_
 
 Implemented bullet firing logic (based on attack speed), implemented collision logic (with enemies and walls)
+
+_V0.4.1_
+
+Added collision with powerup logic

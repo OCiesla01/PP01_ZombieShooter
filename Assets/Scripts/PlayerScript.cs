@@ -71,4 +71,13 @@ public class PlayerScript : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, -zBound);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Powerup"))
+        {
+            Debug.Log("Powerup picked!");
+            Destroy(other.gameObject);
+        }
+    }
 }

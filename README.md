@@ -27,3 +27,7 @@ Implemented random powerup spawning inside the main area, implemented random ene
 **_V0.5.1_**
 
 Improved bullet firing position
+
+**_V0.6_**
+
+Imported testing assets (not final). Updated enemies movement and rotation towards player

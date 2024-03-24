@@ -80,4 +80,13 @@ public class PlayerScript : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Game Over");
+            isAlive = false;
+        }
+    }
 }

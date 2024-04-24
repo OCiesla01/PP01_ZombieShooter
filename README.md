@@ -1,5 +1,7 @@
 # PP01_ZombieShooter
- 
+ ![1](https://github.com/OCiesla01/PP01_ZombieShooter/assets/130390861/922e4a90-4039-4054-9a7f-c98cad0d3b93)
+![2](https://github.com/OCiesla01/PP01_ZombieShooter/assets/130390861/e2bd5486-5935-45e0-8235-e2b9b890f55f)
+
 **_V0.1 (Initial Commit + Fixing Material)_**
 
 Setting up the project, creating primitives, creating materials, setting up space

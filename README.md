@@ -31,3 +31,7 @@ Improved bullet firing position
 **_V0.6_**
 
 Imported testing assets (not final). Updated enemies movement and rotation towards player
+
+**_V1.0_**
+
+Finished and optimized project.

@@ -6,15 +6,12 @@ public class BulletSpawnerScript : MonoBehaviour
 {
     public GameObject bulletPrefab;
 
-    private float attackSpeed = 0.5f;
+    public float attackSpeed = .5f;
     private float nextTimeToFire = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
+    public AudioSource pistolAudio;
+    [SerializeField] private PlayerScript playerScript;
 
-    // Update is called once per frame
     void Update()
     {
         if (Time.time >= nextTimeToFire)
@@ -26,6 +23,10 @@ public class BulletSpawnerScript : MonoBehaviour
 
     void FireBullet()
     {
-        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        if (playerScript.isAlive)
+        {
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            pistolAudio.Play();
+        }
     }
 }

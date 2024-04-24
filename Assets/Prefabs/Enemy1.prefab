@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b2c2429fc521d4f8134c092e2ed666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  player: {fileID: 0}
+  moveSpeed: 5
 --- !u!54 &3048483028293690427
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!1001 &6994710569402819026
 PrefabInstance:
@@ -348,4 +349,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b2c2429fc521d4f8134c092e2ed666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   moveSpeed: 3

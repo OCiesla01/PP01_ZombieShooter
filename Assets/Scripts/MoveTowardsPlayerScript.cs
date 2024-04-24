@@ -7,33 +7,54 @@ public class MoveTowardsPlayerScript : MonoBehaviour
 {
 
     private GameObject player;
+    private Transform playerTransform;
     private PlayerScript playerScript;
     private Rigidbody zombieRb;
-    private Vector3 stopZombies;
     public float moveSpeed;
-    // Start is called before the first frame update
+    private float rotationSpeed = 5.0f;
+    private float rotationDistance = 30.0f;
+
     void Start()
     {
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerScript>();
         zombieRb = GetComponentInChildren<Rigidbody>();
+
+        if (playerScript != null)
+        {
+            playerTransform = player.transform;
+        }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 targetDirection = player.transform.position - transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-
         if (playerScript.isAlive)
         {
-            Vector3 moveTowardsPlayer = (player.transform.position - transform.position).normalized;
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
-            zombieRb.velocity = moveTowardsPlayer * moveSpeed;
+            MoveTowardsTarget();
+            RotateTowardsTarget();
         }
-        else
+    }
+
+    // Move zombie towards player
+    private void MoveTowardsTarget()
+    {
+        if (player != null)
         {
-            zombieRb.velocity = stopZombies;
+            Vector3 direction = (playerTransform.position - transform.position).normalized;
+            zombieRb.velocity = direction * moveSpeed;
+        }
+    }
+
+    // Rotate zombie towards player, only when distance between zombie and player is less than rotation distance (30 units)
+    private void RotateTowardsTarget()
+    {
+        if (Vector3.Distance(transform.position, playerTransform.position) < rotationDistance)
+        {
+            Vector3 targetDirection = (playerTransform.position - transform.position).normalized;
+            float singleStep = rotationSpeed * Time.deltaTime;
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+            Quaternion rotation = Quaternion.LookRotation(newDirection);
+            zombieRb.MoveRotation(rotation);
         }
     }
 }

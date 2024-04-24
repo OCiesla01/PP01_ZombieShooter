@@ -6,13 +6,17 @@ public class BulletScript : MonoBehaviour
 {
 
     private float speed = 10.0f;
-    // Start is called before the first frame update
+    private AudioSource zombieDeathAudio;
+    private UIManager uiManager;
+    private SpawnManagerScript spawnManagerScript;
+
     void Start()
     {
-
+        zombieDeathAudio = GameObject.Find("ZombieDeathAudio").GetComponent<AudioSource>();
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        spawnManagerScript = GameObject.Find("SpawnManager").GetComponent<SpawnManagerScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position += transform.up * speed * Time.deltaTime;
@@ -22,6 +26,9 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            spawnManagerScript.UpdateZombiesSpeed();
+            uiManager.zombiesKilled += 1;
+            zombieDeathAudio.Play();
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
